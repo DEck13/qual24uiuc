@@ -38,19 +38,23 @@ These data sets are loaded in below:
 
 ```{r, message=FALSE}
 dat_chadwick = read_csv("dat_chadwick.csv")
+#head(dat_chadwick)
 #View(dat_chadwick)
 
 batters_fulltime = Batting %>% 
   filter(yearID >= 2017, AB >= 550, yearID != 2020) %>% 
+  ## definition of full-time players
+  filter(AB >= 550) %>% 
   left_join(People %>% dplyr::select(playerID, nameFirst, nameLast)) %>% 
   mutate(name = paste(nameFirst, nameLast)) %>% 
   dplyr::select(name, playerID, teamID, yearID, HR, AB) %>% 
   rename(year = yearID) 
+#head(batters_fulltime) 
 #View(batters_fulltime)  
 ```
 
 
-You need to transform the \texttt{dat\_chadwick} data set to create features of the exit velocity and launch angle distributions for each player season. This transformed data set will be joined with the \texttt{batters\_fulltime}. The goal of the analysis in the next question is to use the features of the exit velocity and launch angle distributions that you construct in this question to model home runs. You need to name the final data set that you created in this question \texttt{bat}. You may restrict attention to complete cases, although that is neither required and it might not be necessary.
+You need to transform the \texttt{dat\_chadwick} data set to create features of the exit velocity and launch angle distributions for each player season. This transformed data set will be joined with the \texttt{batters\_fulltime}. The goal of the analysis in the next question is to use the features of the exit velocity and launch angle distributions that you construct in this question to model home runs. You may restrict attention to complete cases, although that is neither required and it might not be necessary.
 
 \vspace{5pt}
 
@@ -61,14 +65,9 @@ bat = bat[complete.cases(bat), ]
 
 \vspace{5pt}
 
-Notes: home runs are relatively rare events. They require for a ball to be hit very hard (high exit velocity) and within a range of launch angles. Thus, average exit velocities and average launch angles may be of limited utility for the modeling of home runs. 
+Note that home runs are relatively rare events. They require for a ball to be hit very hard (high exit velocity) and within a range of launch angles. Thus, average exit velocities and average launch angles may be of limited utility for the modeling of home runs. You will need to create additional features of the exit velocity and launch angle distributions beyond simple averages, and you will need to provide justification for these choices [3 points]. 
 
-<!-- ```{r} -->
-<!--   #left_join(bat_statcast, by = c('playerID' = 'key_bbref', 'year' = 'year')) %>%  -->
-<!--   #left_join(teams) %>%  -->
-<!--   #select(-batter_name) -->
-<!-- #bat = bat[complete.cases(bat), ] -->
-<!-- ``` -->
+For clarity, note that a successfully created \texttt{bat} data set is worth 7 points. Inclusion of justified features of the exit velocity and launch angle distributions is worth 3 points.
 
 
 ## Question 2 [10 points]
