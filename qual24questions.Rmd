@@ -1,0 +1,79 @@
+---
+title: "Qualifying exam questions"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions 
+
+
+
+
+You will need to load in the follwoing packages:
+
+\vspace{5pt}
+
+```{r, message=FALSE,warning=FALSE}
+library(tidyverse)
+library(Lahman)
+```
+
+## Question 1 [10 points]
+
+In this question you will be tasked with creating a data set named \texttt{bat}. This data set will be analyzed in the next question. This data set will be constructed from the two data sets described below: 
+
+- \texttt{dat\_chadwick}: A data set containing batting information on all balls in play from 2017-2022 with the 2020 season excluded. In particular we have the launch angle (angle of ball off bat) and the exit velocity (velocity of ball off bat) for each ball in play. This data set includes batter's name, the team they played for, the year. It also includes a unique batter identifier called \texttt{key\_bbref}.
+
+- \texttt{batters\_fulltime}: A data set containing batting outcome information for full-time players from 2017-2022 with the 2020 season excluded. These outcomes are aggregates over a season. In particular we have the number of home runs hit by a player and the number of at bats (at bats are chances to hit a home run). This data set includes batter's name, the team they played for, the year. It also includes a unique batter identifier called \texttt{playerID}. This unique identifier is the same as the \texttt{key\_bbref} identifier in the \texttt{dat\_chadwick} data set.
+
+\vspace{5pt}
+
+These data sets are loaded in below:
+
+\vspace{5pt}
+
+
+```{r, message=FALSE}
+dat_chadwick = read_csv("dat_chadwick.csv")
+#View(dat_chadwick)
+
+batters_fulltime = Batting %>% 
+  filter(yearID >= 2017, AB >= 550, yearID != 2020) %>% 
+  left_join(People %>% dplyr::select(playerID, nameFirst, nameLast)) %>% 
+  mutate(name = paste(nameFirst, nameLast)) %>% 
+  dplyr::select(name, playerID, teamID, yearID, HR, AB) %>% 
+  rename(year = yearID) 
+#View(batters_fulltime)  
+```
+
+
+You need to transform the \texttt{dat\_chadwick} data set to create features of the exit velocity and launch angle distributions for each player season. This transformed data set will be joined with the \texttt{batters\_fulltime}. The goal of the analysis in the next question is to use the features of the exit velocity and launch angle distributions that you construct in this question to model home runs. You need to name the final data set that you created in this question \texttt{bat}. You may restrict attention to complete cases, although that is neither required and it might not be necessary.
+
+\vspace{5pt}
+
+```{r, eval=FALSE}
+bat = bat[complete.cases(bat), ]
+```
+
+
+\vspace{5pt}
+
+Notes: home runs are relatively rare events. They require for a ball to be hit very hard (high exit velocity) and within a range of launch angles. Thus, average exit velocities and average launch angles may be of limited utility for the modeling of home runs. 
+
+<!-- ```{r} -->
+<!--   #left_join(bat_statcast, by = c('playerID' = 'key_bbref', 'year' = 'year')) %>%  -->
+<!--   #left_join(teams) %>%  -->
+<!--   #select(-batter_name) -->
+<!-- #bat = bat[complete.cases(bat), ] -->
+<!-- ``` -->
+
+
+## Question 2 [10 points]
+
+In this question you are to model home runs. Your model should include year and features of the exit velocity and launch angle distributions that you constructed in the previous question. You should also add a term that isolates the Colorado Rockies (teamID: COL) because the high altitude of the stadium that this team plays its games allows for batters to hit home runs more often. 
+
+You need to justify your model using a combination of model selection criteria [1 points], diagnostics [2 points], out-of-sample prediction [2 points]. You also need to discuss strengths and weaknesses of your final model [1 points]. You do not need to report every model that you fit. However, you do need to show comparisons involving at least two carefully constructed candidate models. Your model should perform well as judged by these criteria [4 points]. 
+
