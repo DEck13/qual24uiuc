@@ -4,5 +4,5 @@ This repository includes materials necessary for you to answer questions for the
 
 These materials are: 
 
-- exam questions contained in the documents \texttt{qual24questions.Rmd} and \texttt{qual24questions.pdf}
-- a data set needed to answer questions stated in the above documents. This data set is names \texttt{dat\_chadwick}.
+- exam questions contained in the documents **qual24questions.Rmd** and **qual24questions.pdf**
+- a data set needed to answer questions stated in the above documents. This data set is names **dat\_chadwick**.
