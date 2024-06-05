@@ -9,10 +9,28 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Instructions 
 
+This file contains two questions for the take-home portion of the 2024 Statistics qualifying exam at the University of Illinois Urbana-Champaign. This part of the exam is assigned at noon on June 27 and is due at 6 PM on June 28. 
+
+You are required to submit your answers to the questions in this document as a pdf file. Your submission should be a reproducible technical report and should include all relevant code necessary to answer the two qualifying exam questions. You can submit your finalized pdf file to Aaron Thompson at aaron5@illinois.edu. 
 
 
 
-You will need to load in the follwoing packages:
+DO NOT ENTER YOUR NAME; ENTER THE ANONYMOUS CODE THAT YOU WERE GIVEN. 
+
+
+<!-- I am thinking of setting up a public GitHub repo with an Rmd file and csv files. The Rmd file will contain the questions and any information about the data sets. The csv files will contain the data. This repo can go live the day of the exam. The students can be given a link to this GitHub repo when they complete their written exam. -->
+
+<!-- The students can supply their answers in the included Rmd file and can enter their qualifying exam code in the author field. The students can submit their completed exams in pdf format to Aaron Thompson or whoever is in charge of collecting the exams. -->
+
+<!-- The students can contact me if they have any technical difficulties with GitHub, R markdown, or software compatibility concerns. -->
+
+
+<!-- I am concerned about some details.  Generally, there should be no direct contact between us and the examinees during the exam.  Therefore, I think it would be best to have proctoring staff handle any requests from examinees, including technical issues.  The staff could then contact you, if needed, to resolve the issues. -->
+
+<!-- Also, I don't think we can generally assume all examinees have taken your STAT 528.  I'm not sure what the situation will be with the upcoming exam, but there are conceivable circumstances under which someone might be eligible without having completed your course.  Therefore, I suggest we provide instructions detailed enough to permit anyone to complete the exam. -->
+
+
+You will need to load in the following packages:
 
 \vspace{5pt}
 
@@ -69,10 +87,14 @@ Note that home runs are relatively rare events. They require for a ball to be hi
 
 For clarity, note that a successfully created \texttt{bat} data set is worth 7 points. Inclusion of justified features of the exit velocity and launch angle distributions is worth 3 points.
 
+Display the the first 6 rows of your \texttt{bat} data set:
+
+
 
 ## Question 2 [10 points]
 
-In this question you are to model home runs. Your model should include year and features of the exit velocity and launch angle distributions that you constructed in the previous question. You should also add a term that isolates the Colorado Rockies (teamID: COL) because the high altitude of the stadium that this team plays its games allows for batters to hit home runs more often. 
+In this question you are to model home runs. Your model should include year and features of the exit velocity and launch angle distributions that you constructed in the previous question. You should also add a term that isolates the Colorado Rockies (teamID: COL) because the high altitude of the stadium that this team plays its games allows for batters to hit home runs more often. You should also consider adding a term that isolates the 2019 season because it has been demonstrated that there was an uptick in home run hitting due to changes made to the baseball itself.
 
 You need to justify your model using a combination of model selection criteria [1 points], diagnostics [2 points], out-of-sample prediction [2 points]. You also need to discuss strengths and weaknesses of your final model [1 points]. You do not need to report every model that you fit. However, you do need to show comparisons involving at least two carefully constructed candidate models. Your model should perform well as judged by these criteria [4 points]. 
 
+Note that there is code in the \texttt{yang2021supp.R} file that implements the "quasi-empirical residual distribution function" model diagnostic methodology for Poisson regression. Inclusion of this file does not require you to implement Poisson regression.
