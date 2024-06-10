@@ -2,6 +2,7 @@
 title: "Qualifying exam questions"
 author: Qual exam code goes here
 output: pdf_document
+urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}
@@ -12,15 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This file contains two questions for the take-home portion of the 2024 Statistics qualifying exam at the University of Illinois Urbana-Champaign. This part of the exam is assigned at noon on June 27 and is due at 6 PM on June 28. 
 
-You are required to submit your answers to the questions in this document as a pdf file. Your submission should be a reproducible technical report and should include all relevant code necessary to answer the two qualifying exam questions. You can use the Rmd file that generated this pdf file as a template. You can submit your finalized pdf file to Aaron Thompson at aaron5@illinois.edu. 
+You are required to submit your answers to the questions in this document as a pdf file. Your submission should be a reproducible technical report and should include all relevant code necessary to answer the two qualifying exam questions. You can use the Rmd file that generated this pdf file as a template. You can submit your finalized pdf file to Asraa Ibrahim at asraai3@illinois.edu. You can email Asraa Ibrahim at asraai3@illinois.edu if you have any technical difficulties.
 
-You can email Aaron Thompson at aaron5@illinois.edu if you have any technical difficulties.
-
-
-
-
-
-You will need to load in the following packages:
+You will need to load in the following packages to complete this exam:
 
 \vspace{5pt}
 
