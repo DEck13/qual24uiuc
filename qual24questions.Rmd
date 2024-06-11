@@ -19,6 +19,8 @@ You need to submit your finalized pdf file to Asraa Ibrahim at asraai3@illinois.
 
 The exam code should be supplied in the author field. The same exam code should be used as was used for the in-person sessions. Other than the exam code, no identifying information should appear in the submitted file.  This includes personal names, system paths to files, and file names.
 
+This exam is open book, open notes, and all web resources are allowed. Students are not allowed to work on this exam with each other in any capacity. 
+
 You will need to load in the following packages to complete this exam (these packages may need to be installed):
 
 \vspace{5pt}
